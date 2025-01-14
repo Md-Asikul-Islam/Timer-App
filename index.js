@@ -1,13 +1,8 @@
-const endDate = new Date("1 jan 2025").getTime();
-const startDate = new Date().getTime();
-console.log(startDate)
-
+const prevDate = new Date("1 jan, 2025 00:00:00 ").getTime();
 
 let x  = setInterval(function updateTimer() {
     const now = new Date().getTime();
-
-    const distanceCovered =  startDate - now;
-    const distancePending = now - endDate
+    const distancePending = now - prevDate
 
     //caculate days, min, hrs, secs
     //1 day = 24 * 60 * 60 * 1000 ms
