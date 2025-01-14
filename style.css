@@ -1,45 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
+body {
+    background-image: url('./background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    height: 100vh;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 10rem;
+    text-align: center;
 }
 
-h1{
-   font-size: 3rem;
+h1 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.countdown{
+.countdown {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     padding-top: 2rem;
-    text-align: center;
-
 }
 
-p{
-    font-size: 1.4rem;
+.countdown div {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.countdown div::before,
+.countdown div::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #7c4444, #00ff00, #0000ff, #ff0000);
+    background-size: 400%;
+    z-index: -1;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.countdown div::after {
+    filter: blur(20px);
+}
+
+.countdown div:hover::before,
+.countdown div:hover::after {
+    opacity: 1;
+    animation: animateBorder 6s linear infinite;
+}
+
+@keyframes animateBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+p {
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
-span{
-    font-size: 1.2rem;
-    
-    
+span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .countdown div {
+        min-width: 80px;
+        padding: 1rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    span {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .countdown {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .countdown div {
+        width: 90px;
+        min-height: 90px;
+        padding: 0.8rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    span {
+        font-size: 1.2rem;
+    }
 }
